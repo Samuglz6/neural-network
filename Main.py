@@ -1,12 +1,8 @@
-from Neuron import Neuron
+from NeuralNetwork import NeuralNetwork
 import numpy as np
 
 if __name__ == '__main__':
-    weights = np.array([1,2])
-    bias = 4
-    
-    neuron = Neuron(weights, bias)
+    network = NeuralNetwork()
+    inputs = np.array([2,3])
 
-    inputs = np.array([1,1])
-    print(neuron.activate(inputs))
-    
+    print(network.activate(inputs))
