@@ -7,7 +7,7 @@ def deriv_sigmoid(x):
     return x * (1 - x)
 
 def squad_error(obtained, expected):
-    return ((expected - obtained)**2)
+    return (expected**2 - obtained**2)/2
 
 class NeuralNetwork:
     def __init__(self):
@@ -36,8 +36,8 @@ class NeuralNetwork:
         return result
 
     def train(self, input, expected):
-        learn_rate = 0.1
-        epochs = 1
+        learn_rate = 0.5
+        epochs = 1000
 
         for epoch in range(epochs):
             for x, y in zip(input, expected):
@@ -79,12 +79,9 @@ class NeuralNetwork:
                  new_weights_h2 = [self.o1.weights[0] + d_o1_w1, self.o1.weights[1] + d_o1_w2]
 
                  #Actualizamos los pesos de las neuronas
-                 print(delta_h1)
-                 print(self.o1.weights)
                  self.o1.weights = new_weights_o1
                  self.h1.weights = new_weights_h1
                  self.h2.weights = new_weights_h2
-        return 0
 
 class Neuron:
     def __init__(self, weights, bias):
